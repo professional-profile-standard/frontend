@@ -51,8 +51,9 @@ export default function Parse() {
       {pps && (
         <div>
           <h2 className="text-xl">Result</h2>
-          <div>
+          <div className="space-y-5">
             <PersonalDetails data={pps.personal_details} />
+            <Educations data={pps.educations} />
           </div>
         </div>
       )}
@@ -72,6 +73,29 @@ function PersonalDetails({ data }) {
       <p>{data.contact.email}</p>
       <p>{data.contact.country_code} {data.contact.phone_number}</p>
       <p>{data.contact.website}</p>
+    </div>
+  );
+}
+
+function Educations({ data }) {
+  if (!data) return null;
+
+  return (
+    <div>
+      <h2>Education</h2>
+      {data.map((education, index) => (
+        <div key={index}>
+          <h3>{education.name}</h3>
+          <p>{education.location}</p>
+          <p>{education.from} - {education.to}</p>
+          <p>{education.degree_name} in {education.field_of_study}</p>
+          <ul>
+            {education.achievements.map((achievement, i) => (
+              <li key={i}>{achievement}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 }
