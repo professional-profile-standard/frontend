@@ -4,7 +4,7 @@
 
 {#if data}
   <div>
-    <h2 class="text-xl font-medium">Links</h2>
+    <h2 class="category-title">Links</h2>
     <ul>
       {#each data as link, index (index)}
         <li>

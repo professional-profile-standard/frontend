@@ -4,7 +4,7 @@
 
 {#if data}
   <div>
-    <h2 class="text-xl font-medium">Education</h2>
+    <h2 class="category-title">Education</h2>
     {#each data as education, index (index)}
       <div>
         <h3>{education.name}</h3>

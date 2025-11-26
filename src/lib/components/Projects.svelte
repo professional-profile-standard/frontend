@@ -4,9 +4,9 @@
 
 {#if data}
   <div>
-    <h3 class="font-medium text-xl mb-2">Projects</h3>
+    <h2 class="category-title">Projects</h2>
     {#each data as project, index (index)}
-      <div>
+      <div class="space-y-1">
         <h3 class="font-medium">{project.name}</h3>
         <p>{project.description}</p>
         <div>
@@ -18,13 +18,13 @@
         </div>
         <div>
           <p>
-            Tech Stack:{" "}
+            <span class="font-medium">Tech Stack</span>:{" "}
             {#each project.techstack as tech, i (i)}
               <span>{tech}, </span>
             {/each}
           </p>
         </div>
-        <ul>
+        <ul class="pl-3">
           {#each project.details as detail, i (i)}
             <li class="list-disc list-inside">{detail}</li>
           {/each}

@@ -10,8 +10,8 @@
 {#if data}
     <div>
         {#each Object.entries(data) as [role, roleData] (role)}
-            <div class="space-y-3">
-                <h2 class="font-medium text-xl">{role.toUpperCase()}</h2>
+            <div class="space-y-10">
+                <h2 class="category-title">{role.toUpperCase()}</h2>
                 <!-- <ProfessionalSummary data={roleData.professional_summary} /> -->
                 <div>
                     <h3 class="font-medium text-xl mb-2">{data.title}</h3>

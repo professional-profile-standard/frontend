@@ -4,7 +4,7 @@
 
 {#if data}
   <div>
-    <h2 class="font-medium text-xl">Misc</h2>
+    <h2 class="category-title">Misc</h2>
     {#each Object.entries(data) as [key, value] (key)}
       <div>
         <h3 class="font-medium text-lg">{key.charAt(0).toUpperCase() + key.slice(1)}</h3>

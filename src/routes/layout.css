@@ -1,1 +1,40 @@
 @import 'tailwindcss';
+
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #0f0f0f;
+        --text: #ddd;
+        --link: rgb(94, 156, 214);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --primary: #ffffff;
+        --text: #161616;
+        --link: rgb(49, 82, 112);
+    }
+}
+
+@theme inline {
+    --color-primary: var(--primary);
+    --color-text: var(--text);
+    --color-link: var(--link);
+}
+
+a {
+    @apply text-link;
+}
+
+.category-title {
+    @apply border-b mb-2 font-medium text-xl;
+}
+
+@media print {
+
+    .pps-wrapper>div:nth-child(1),
+    .pps-wrapper>div:nth-child(2) {
+        display: none;
+    }
+}
