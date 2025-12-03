@@ -24,8 +24,5 @@ export function renderLocation(location) {
 }
 export function getPhoneNumber(contact) {
     if (!contact) return "";
-    return (
-        contact.country_code +
-        contact.phone_number
-    );
+    return contact.country_code + contact.phone_number;
 }

@@ -4,7 +4,6 @@
 
 <script>
     import Educations from "./Educations.svelte";
-    import PersonalDetails from "./PersonalDetails.svelte";
     import Links from "./Links.svelte";
     import Misc from "./Misc.svelte";
     import Profiles from "./Profiles.svelte";
@@ -23,7 +22,6 @@
     {#if pps}
         <div class="pps-result">
             <div class="space-y-10">
-                <!-- <PersonalDetails data={pps.personal_details} /> -->
                 <Renderer
                     data={pps.personal_details}
                     message="Error while rendering personal details"

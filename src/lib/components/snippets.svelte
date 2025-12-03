@@ -1,5 +1,5 @@
 <script module>
-    export { errorMessage, personalDetailsSnippet };
+    export { errorMessage, personalDetailsSnippet, linkSnippet };
 </script>
 
 <script>
@@ -59,4 +59,12 @@
             >
         </p>
     </div>
+{/snippet}
+
+{#snippet linkSnippet(link)}
+    <li>
+        <a href={link.url} target="_blank" rel="noopener noreferrer">
+            {link.url_text || link.name || link.url}
+        </a>
+    </li>
 {/snippet}

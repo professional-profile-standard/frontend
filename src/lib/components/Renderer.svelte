@@ -1,6 +1,6 @@
 <script>
     import { errorMessage } from "$lib/components/snippets.svelte";
-    const { data, message, schema, snippet } = $props();
+    const { data, message, schema, snippet, customValidation } = $props();
 
     let validatedData = $state(null);
     let error = $state(null);
