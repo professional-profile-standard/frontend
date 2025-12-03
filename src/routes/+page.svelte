@@ -38,13 +38,11 @@
         })
         .catch((e) => {
             error = e.message;
-            console.log(e);
         });
 
     function updatePps(e) {
         try {
             pps = parse(yaml);
-            console.log(pps);
             error = null;
         } catch (e) {
             error = e.message;

@@ -9,6 +9,9 @@
     import Misc from "./Misc.svelte";
     import Profiles from "./Profiles.svelte";
     import Button from "./ui/Button.svelte";
+    import Renderer from "./Renderer.svelte";
+    import { personalDetailsSchema } from "$lib/schema";
+    import { personalDetailsSnippet } from "./snippets.svelte";
 
     const { pps } = $props();
     function printpps() {
@@ -20,7 +23,13 @@
     {#if pps}
         <div class="pps-result">
             <div class="space-y-10">
-                <PersonalDetails data={pps.personal_details} />
+                <!-- <PersonalDetails data={pps.personal_details} /> -->
+                <Renderer
+                    data={pps.personal_details}
+                    message="Error while rendering personal details"
+                    schema={personalDetailsSchema}
+                    snippet={personalDetailsSnippet}
+                />
                 <Educations data={pps.educations} />
                 <Links data={pps.links} />
                 <Profiles data={pps.profiles} />

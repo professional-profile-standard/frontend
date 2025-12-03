@@ -1,6 +1,6 @@
 <script>
     import { personalDetailsSchema } from "$lib/schema";
-    import { errorMessage } from "./PPS.svelte";
+    import { errorMessage } from "$lib/components/snippets.svelte";
     const { data } = $props();
 
     const message = "Error while rendering personal details";
