@@ -3,7 +3,7 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --primary: #0f0f0f;
+        --primary: #111114;
         --text: #ddd;
         --link: rgb(94, 156, 214);
     }

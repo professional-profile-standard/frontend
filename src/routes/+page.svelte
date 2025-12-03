@@ -8,7 +8,7 @@
 
     let yaml = $state("");
     let error = $state(null);
-    let pps = $state();
+    let pps = $state("");
 
     async function fetchPpsYamlText() {
         let yaml = "";
@@ -43,7 +43,8 @@
 
     function updatePps(e) {
         try {
-            pps = parse(e.target.value);
+            pps = parse(yaml);
+            console.log(pps);
             error = null;
         } catch (e) {
             error = e.message;
@@ -59,7 +60,7 @@
         </label>
         <textarea
             id="pps-textarea"
-            class="block border w-full h-100 rounded p-2 focus:outline-2"
+            class="block border w-full h-100 rounded-lg p-2 focus:outline-2 focus:outline-secondary/10"
             placeholder="PPS YAML file content"
             bind:value={yaml}
             oninput={updatePps}

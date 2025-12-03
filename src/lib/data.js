@@ -1,17 +1,21 @@
 export const sample_pps = `
 personal_details:
-  first_name: Md
-  middle_name: Sujauddin
-  last_name: Sekh
-  preferred_first_name: Sujauddin
+  first_name: Ruby
+  preferred_first_name: Cash
+  middle_name: Ada
+  last_name: Stack
+  profile_pic: https://cdn.pixabay.com/photo/2024/10/09/23/55/ai-generated-9109565_640.jpg
   gender: Male
-  race: Indian
-  location: West Bengal, India
+  race: Tabby
+  location:
+    country: Catan
+    state: Tabby State
+    street: East
   contact:
-    country_code: "+91"
+    country_code: "+99"
     phone_number: 9999999999 
-    email: ssujj@protonmail.com
-    website: https://sujauddin.me
+    email: no-mail@example.com
+    website: https://example.com
 
 educations:
   - name: Narula Institute of Technology
@@ -37,7 +41,7 @@ links:
     url: https://sujauddin.me/articles
     url_text: sujauddin.me/articles
 
-targets:
+profiles:
   swe:
     professional_summary:
       title: Junior Software Engineer
