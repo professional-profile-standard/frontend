@@ -66,14 +66,14 @@
     <script src="/vendors/ace/ace.js"></script>
 </svelte:head>
 
-<div>
-    <div class="my-10">
+<div class="xl:flex xl:gap-4 xl:*:flex-1 relative">
+    <div class="my-10 h-[50dvh] xl:sticky xl:top-0 xl:h-[calc(100dvh-50px)]">
         <label for="editor" class="block mb-1 font-medium">
             Enter your PPS
         </label>
         <div
             id="editor"
-            class="h-[50dvh] border rounded-lg focus:outline-3 focus:outline-text/50"
+            class="h-full border rounded-lg focus:outline-3 focus:outline-text/50"
             placeholder="PPS YAML file content"
             style={`
             font-size: 14px;
@@ -81,10 +81,12 @@
         ></div>
     </div>
 
-    {#await promise}
-        <p>Loading...</p>
-    {:then data}
-        <div class="error">{error}</div>
-        <PPSWrapper {pps} />
-    {/await}
+    <div>
+        {#await promise}
+            <p>Loading...</p>
+        {:then data}
+            <div class="error">{error}</div>
+            <PPSWrapper {pps} />
+        {/await}
+    </div>
 </div>
