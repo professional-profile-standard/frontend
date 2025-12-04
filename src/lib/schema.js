@@ -146,8 +146,55 @@ export const projectSchema = object({
 });
 
 export const miscSchema = object({
-  cover_letter: string().nullable(),
-  qna: object().default({}),
-  notes: string().nullable(),
-  others: mixed().nullable()
+    cover_letter: string().nullable(),
+    qna: object().default({}),
+    notes: string().nullable(),
+    others: mixed().nullable()
+});
+
+
+export const certificateSchema = object({
+    name: string().required(),
+    issuer: string().required(),
+    issue_date: date().nullable(),
+    expiry_date: date().nullable(),
+    credential_id: string().nullable(),
+    url: string().url().nullable(),
+    skills: array().of(string()).default([])
+});
+
+export const profileSchema = object({
+    professional_summary: professionalSummarySchema.required(),
+    skills: skillsSchema.default({}),
+    experience: array().of(experienceSchema).default([]),
+    projects: array().of(projectSchema).default([]),
+    certificates: array().of(certificateSchema).default([]),
+    misc: miscSchema.optional().nullable()
+});
+
+export const ppsSchema = object({
+    personal_details: personalDetailsSchema.required(),
+    educations: array().of(educationSchema).default([]),
+    links: array().of(linkSchema).default([]),
+    certificates: array().of(certificateSchema).default([]),
+    profiles: object().test(
+        'profiles-validation',
+        'profiles must be an object mapping strings to valid profile objects',
+        function (value) {
+            if (!value) return true;
+
+            for (const [key, profile] of Object.entries(value)) {
+                try {
+                    profileSchema.validateSync(profile);
+                } catch (err) {
+                    return this.createError({
+                        path: `${this.path}.${key}`,
+                        message: err.message
+                    });
+                }
+            }
+            return true;
+        }
+    ).default({}),
+    misc: miscSchema.optional().nullable()
 });

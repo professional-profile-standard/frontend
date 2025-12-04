@@ -58,7 +58,16 @@ links:
   - url: https://sujauddin.me/articles
     url_text: Link3
   - url: https://example.com
-
+certificates:
+  - name: Cert 1
+    issuer: ABC
+    issue_date: 2022-01-01
+    expiry_date: 2022-01-01
+    credential_id: adjo3200u8aslfj
+    url: https://example.com/
+    skills: [JS, Python]
+  - name: Cert 2
+    issuer: XYZ
 profiles:
   SWE:
     professional_summary:
@@ -137,6 +146,86 @@ profiles:
       
     misc:
       notes: This is some notes for you.
+  AI:
+    professional_summary:
+      title: Software Engineer
+      summary: >
+        Software engineer with experience in designing and developing full-stack AI-integrated applications
+    skills:
+      languages: [Python, JavaScript]
+      libraries: [This, That]
+      Tools: [Git, BASH, Virtual Machine]
+      Others: [One, Two, Three]
+    work_experience:
+      - title: Backend Developer Intern
+        organization: ABC Org
+        description: Description of the experience
+        location: Place, Country
+        logo: https://wikipidia.org/favicon.ico
+        is_current: false
+        start_date: 2025-06-06  
+        end_date: 2025-06-06
+        experience_type: Internship
+        contributions:
+          - Achieved X measured by Y by doing Z lol
+          - Contribution 2
+          - Contribution 3
+          - Contribution 4
+          - Contribution 5
+        achievements:
+          - Achievement 1
+          - Achievement 2
+          - Achievement 3
+        technologies: [C, CPP, Python, Python++]
+
+      - title: Backend Developer Intern
+        organization: ABC Org
+        technologies: [C, CPP, Python, Python++]
+
+      - title: The Engineer
+        organization: Personal
+
+    projects:
+      - name: ProjectABC
+        short_description: A short description
+        description: Long description, Long description, Long description 
+        type: Personal
+        links:
+          - https://example.com
+          - https://example.com
+        techstack: [Python, Django]
+        start_date: 2025-12-12
+        end_date: 2025-12-12
+        status: Completed
+        tags: [Python, LLM]
+        details:
+          - Developed a cutting-edge SaaS platform for productivity, leveraging AI-driven technology to generate high-quality PDF articles from user-provided topics or prompts.
+          - Utilized Amazon S3 cloud storage to store and serve generated PDF files, ensuring secure and efficient data management.
+          - Successfully integrated Geminis GenAI capabilities to power the article creation process, enabling users to access high-quality, AI-generated content.
+      - name: Project XYZ
+        short_description: A short description
+        links: 
+          - http://example.com
+
+      - name: Project XYZ 2
+        short_description: A short description
+    
+    certificates:
+      - name: Cert 1
+        issuer: ABC
+        issue_date: 2022-01-01
+        expiry_date: 2022-01-01
+        credential_id: adjo3200u8aslfj
+        url: https://example.com/
+        skills: [JS, Python]
+      - name: Cert 2
+        issuer: XYZ
+      
+    misc:
+      notes: This is some notes for you.
+
+
+
 
 misc:
   cover_letter: This is a cover letter.

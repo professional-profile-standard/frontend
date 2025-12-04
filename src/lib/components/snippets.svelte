@@ -8,7 +8,8 @@
         experienceSnippet,
         educationSnippet,
         projectSnippet,
-        miscSnippet
+        miscSnippet,
+        certificateSnippet
     };
 </script>
 
@@ -407,6 +408,68 @@
                         </div>
                     {/each}
                 </dl>
+            </div>
+        {/if}
+    </div>
+{/snippet}
+
+{#snippet certificateSnippet(certificate)}
+    <div class="bg-white rounded-lg border border-gray-200 p-4 space-y-3">
+        <div>
+            <h4 class="font-bold text-gray-900">{certificate.name}</h4>
+            <p class="text-sm text-gray-600">{certificate.issuer}</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 text-sm">
+            {#if certificate.issue_date}
+                <div>
+                    <span class="text-gray-500">Issued:</span>
+                    <span class="ml-1 text-gray-700"
+                        >{formatDate(certificate.issue_date)}</span
+                    >
+                </div>
+            {/if}
+
+            {#if certificate.expiry_date}
+                <div>
+                    <span class="text-gray-500">Expires:</span>
+                    <span class="ml-1 text-gray-700"
+                        >{formatDate(certificate.expiry_date)}</span
+                    >
+                </div>
+            {/if}
+
+            {#if certificate.credential_id}
+                <div class="col-span-2">
+                    <span class="text-gray-500">ID:</span>
+                    <span class="ml-1 font-mono text-gray-700"
+                        >{certificate.credential_id}</span
+                    >
+                </div>
+            {/if}
+        </div>
+
+        {#if certificate.url}
+            <div>
+                <a
+                    href={certificate.url}
+                    target="_blank"
+                    class="text-blue-600 hover:text-blue-800 text-sm inline-flex items-center"
+                >
+                    🔗 View Certificate
+                </a>
+            </div>
+        {/if}
+
+        {#if certificate.skills && certificate.skills.length > 0}
+            <div class="flex flex-wrap gap-1 pt-2 border-t">
+                {#each certificate.skills as skill}
+                    <span
+                        class="px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded"
+                    >
+                        {skill}
+                    </span>
+                {/each}
             </div>
         {/if}
     </div>

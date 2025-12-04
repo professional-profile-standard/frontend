@@ -1,13 +1,18 @@
 <script>
-    // import Skills from "./Skills.svelte";
     import Experience from "./Experiences.svelte";
     import Projects from "./Projects.svelte";
     import Renderer from "./Renderer.svelte";
     import {
+        miscSnippet,
         professionalSummarySnippet,
         skillsSnippet,
     } from "./snippets.svelte";
-    import { professionalSummarySchema, skillsSchema } from "$lib/schema";
+    import {
+        professionalSummarySchema,
+        skillsSchema,
+        miscSchema,
+    } from "$lib/schema";
+    import Certificates from "./Certificates.svelte";
 
     export let data = null;
 </script>
@@ -33,8 +38,13 @@
                     />
                     <Experience data={profileData.work_experience} />
                     <Projects data={profileData.projects} />
-                    <!-- cert -->
-                    <!-- misc -->
+                    <Certificates data={profileData.certificates} />
+                    <Renderer
+                        data={profileData.misc}
+                        message="Error while rendering misc"
+                        schema={miscSchema}
+                        snippet={miscSnippet}
+                    />
                 </div>
             </div>
         {/each}
