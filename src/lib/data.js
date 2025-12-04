@@ -79,7 +79,7 @@ profiles:
       libraries: [This, That]
       Tools: [Git, BASH, Virtual Machine]
       Others: [One, Two, Three]
-    work_experience:
+    experiences:
       - title: Backend Developer Intern
         organization: ABC Org
         description: Description of the experience
@@ -156,7 +156,7 @@ profiles:
       libraries: [This, That]
       Tools: [Git, BASH, Virtual Machine]
       Others: [One, Two, Three]
-    work_experience:
+    experiences:
       - title: Backend Developer Intern
         organization: ABC Org
         description: Description of the experience

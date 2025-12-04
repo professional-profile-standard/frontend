@@ -9,7 +9,8 @@
         educationSnippet,
         projectSnippet,
         miscSnippet,
-        certificateSnippet
+        certificateSnippet,
+        profileSnippet,
     };
 </script>
 
@@ -20,6 +21,15 @@
         renderLocation,
         getPhoneNumber,
     } from "$lib/utils";
+    import Renderer from "./Renderer.svelte";
+    import Projects from "./Projects.svelte";
+    import Experiences from "./Experiences.svelte";
+    import Certificates from "./Certificates.svelte";
+    import { professionalSummarySchema } from "$lib/schema";
+    import { skillsSchema } from "$lib/schema";
+    import { miscSchema } from "$lib/schema";
+    import { experienceSchema } from "$lib/schema";
+    import Profilesold from "./Profilesold.svelte";
 </script>
 
 {#snippet errorMessage(message, error)}
@@ -472,5 +482,31 @@
                 {/each}
             </div>
         {/if}
+    </div>
+{/snippet}
+
+{#snippet profileSnippet(profileData)}
+    <div class="space-y-10">
+        <Renderer
+            data={profileData.professional_summary}
+            message="Error while rendering professional summary"
+            schema={professionalSummarySchema}
+            snippet={professionalSummarySnippet}
+        />
+        <Renderer
+            data={profileData.skills}
+            message="Error while rendering skills"
+            schema={skillsSchema}
+            snippet={skillsSnippet}
+        />
+        <Experiences data={profileData.experiences} />
+        <Projects data={profileData.projects} />
+        <Certificates data={profileData.certificates} />
+        <Renderer
+            data={profileData.misc}
+            message="Error while rendering misc"
+            schema={miscSchema}
+            snippet={miscSnippet}
+        />
     </div>
 {/snippet}
