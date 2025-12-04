@@ -4,7 +4,7 @@
 
 {#if data}
   <div>
-    <h2 class="category-title">🎯 Projects</h2>
+    <h2 class="category-title">💪 Projects</h2>
     {#each data as project, index (index)}
       <div class="space-y-1">
         <h3 class="font-medium">{project.name}</h3>

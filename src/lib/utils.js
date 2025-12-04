@@ -22,7 +22,23 @@ export function renderLocation(location) {
 
     return parts.filter(Boolean).join(", ");
 }
+
 export function getPhoneNumber(contact) {
     if (!contact) return "";
     return contact.country_code + contact.phone_number;
+}
+
+export function formatDateRange(start, end, isCurrent) {
+    if (!start) return '';
+
+    const formatDate = (date) => {
+        if (!date) return '';
+        const d = new Date(date);
+        return `${d.toLocaleString('default', { month: 'short' })} ${d.getFullYear()}`;
+    };
+
+    const startStr = formatDate(start);
+    const endStr = isCurrent ? 'Present' : formatDate(end);
+
+    return `${startStr} - ${endStr}`;
 }

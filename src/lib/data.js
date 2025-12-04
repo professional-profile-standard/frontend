@@ -76,9 +76,9 @@ profiles:
         description: Description of the experience
         location: Place, Country
         logo: https://wikipidia.org/favicon.ico
-        is_current: No
-        start_date: Jul 2025
-        end_date: Sep 2025
+        is_current: false
+        start_date: 2025-06-06  
+        end_date: 2025-06-06
         experience_type: Internship
         contributions:
           - Achieved X measured by Y by doing Z lol

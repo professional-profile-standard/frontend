@@ -91,3 +91,31 @@ export const linkSchema = object().shape({
     name: string().nullable(),
     url_text: string().nullable(),
 });
+
+export const professionalSummarySchema = object({
+    title: string().required('Title is required'),
+    summary: string().required('Summary is required')
+});
+
+export const skillsSchema = object().test('skills-type', 'Skills must be a dictionary of string arrays',
+    (value) => {
+        if (value === undefined) return true; // Optional
+        return Object.values(value).every(arr => Array.isArray(arr) && arr.every(item => typeof item === 'string'));
+    }
+).default({});
+
+export const experienceSchema = object({
+    title: string().required('Title is required'),
+    organization: string().required('Organization is required'),
+    description: string().nullable(),
+    location: mixed().nullable(),
+    logo: string().url().nullable(),
+    is_current: boolean().nullable(),
+    duration: string().nullable(),
+    start_date: date().nullable(),
+    end_date: date().nullable(),
+    experience_type: string().nullable(),
+    contributions: array().of(string()).default([]),
+    achievements: array().of(string()).default([]),
+    technologies: array().of(string()).default([]),
+});

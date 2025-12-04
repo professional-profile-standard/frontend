@@ -1,7 +1,7 @@
 <script>
     import { educationSchema } from "$lib/schema";
     import { formatDate } from "$lib/utils";
-    import { errorMessage } from "./PPS.svelte";
+    import { errorMessage } from "./snippets.svelte";
     const { data } = $props();
     const message = "Error while rendering education";
     let educations = $state([]);

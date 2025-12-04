@@ -1,7 +1,13 @@
 <script>
-    import Skills from "./Skills.svelte";
-    import WorkExperience from "./WorkExperience.svelte";
+    // import Skills from "./Skills.svelte";
+    import Experience from "./Experiences.svelte";
     import Projects from "./Projects.svelte";
+    import Renderer from "./Renderer.svelte";
+    import {
+        professionalSummarySnippet,
+        skillsSnippet,
+    } from "./snippets.svelte";
+    import { professionalSummarySchema, skillsSchema } from "$lib/schema";
 
     export let data = null;
 </script>
@@ -13,11 +19,20 @@
             <div class="bg-gray-800 p-2 rounded-lg">
                 <h3 class="category-title">🪪 {profile}</h3>
                 <div class="space-y-10">
-                    {@render ProfessionalSummary(
-                        profileData.professional_summary,
-                    )}
-                    <Skills data={profileData.skills} />
-                    <WorkExperience data={profileData.work_experience} />
+                    <Renderer
+                        data={profileData.professional_summary}
+                        message="Error while rendering professional summary"
+                        schema={professionalSummarySchema}
+                        snippet={professionalSummarySnippet}
+                    />
+                    <Renderer
+                        data={profileData.skills}
+                        message="Error while rendering skills"
+                        schema={skillsSchema}
+                        snippet={skillsSnippet}
+                    />
+
+                    <Experience data={profileData.work_experience} />
                     <Projects data={profileData.projects} />
                     <!-- cert -->
                     <!-- misc -->
@@ -26,12 +41,3 @@
         {/each}
     </div>
 {/if}
-
-{#snippet ProfessionalSummary(professional_summary)}
-    <div>
-        <h4 class="font-medium text-xl mb-2">
-            {professional_summary?.title}
-        </h4>
-        <p>{professional_summary?.summary}</p>
-    </div>
-{/snippet}
