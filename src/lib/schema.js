@@ -8,7 +8,7 @@ import {
     boolean,
     date,
     ref,
-    lazy
+    lazy,
 } from 'yup';
 
 
@@ -164,37 +164,19 @@ export const certificateSchema = object({
 });
 
 export const profileSchema = object({
-    professional_summary: professionalSummarySchema.required(),
-    skills: skillsSchema.default({}),
-    experience: array().of(experienceSchema).default([]),
-    projects: array().of(projectSchema).default([]),
-    certificates: array().of(certificateSchema).default([]),
-    misc: miscSchema.optional().nullable()
+    professional_summary: object(),
+    skills: object().default({}),
+    experience: array().default([]),
+    projects: array().default([]),
+    certificates: array().default([]),
+    misc: object().optional().nullable()
 });
 
 export const ppsSchema = object({
-    personal_details: personalDetailsSchema.required(),
-    educations: array().of(educationSchema).default([]),
-    links: array().of(linkSchema).default([]),
-    certificates: array().of(certificateSchema).default([]),
-    profiles: object().test(
-        'profiles-validation',
-        'profiles must be an object mapping strings to valid profile objects',
-        function (value) {
-            if (!value) return true;
-
-            for (const [key, profile] of Object.entries(value)) {
-                try {
-                    profileSchema.validateSync(profile);
-                } catch (err) {
-                    return this.createError({
-                        path: `${this.path}.${key}`,
-                        message: err.message
-                    });
-                }
-            }
-            return true;
-        }
-    ).default({}),
-    misc: miscSchema.optional().nullable()
+    personal_details: object(),
+    educations: array().default([]),
+    links: array().default([]),
+    certificates: array().default([]),
+    profiles: object().default({}),
+    misc: object().optional().nullable()
 });

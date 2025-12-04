@@ -109,7 +109,7 @@ profiles:
         organization: Personal
 
     projects:
-      - name: ProjectABC
+      - name: ProectABC
         short_description: A short description
         description: Long description, Long description, Long description 
         type: Personal
