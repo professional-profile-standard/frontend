@@ -139,7 +139,9 @@ profiles:
       notes: This is some notes for you.
 
 misc:
-  qnas:
+  cover_letter: This is a cover letter.
+  qna:
     'What is your preferred location?': Remote
     'Can you relocate?': 'Yes'
+  notes: Some notes
 `

@@ -6,6 +6,9 @@
         professionalSummarySnippet,
         skillsSnippet,
         experienceSnippet,
+        educationSnippet,
+        projectSnippet,
+        miscSnippet
     };
 </script>
 
@@ -229,5 +232,182 @@
                 {/if}
             </div>
         </div>
+    </div>
+{/snippet}
+
+{#snippet educationSnippet(education)}
+    <div class="education-item mb-4 bg-card p-2 rounded-lg space-y-1">
+        <div class="flex items-center gap-2 text-lg">
+            {#if education.logo}{:else}
+                <p>🏫</p>
+            {/if}
+            <h3 class="font-medium self-end leading-none">
+                {education.institute_name}
+            </h3>
+        </div>
+
+        <p>
+            {education.degree_name}
+        </p>
+
+        {#if education.field}
+            <p>Field: {education.field}</p>
+        {/if}
+
+        {#if education.subfield}
+            <p>Subfield: {education.subfield}</p>
+        {/if}
+
+        {#if education.specialization}
+            <p>Specialization: {education.specialization}</p>
+        {/if}
+
+        {#if education.cgpa}
+            <p>CGPA: {education.cgpa}</p>
+        {/if}
+
+        {#if education.location}
+            <p>Location: {education.location}</p>
+        {/if}
+
+        {#if education.duration}
+            <p>Duration: {education.duration}</p>
+        {/if}
+
+        {#if education.start_date || education.end_date}
+            <p>
+                {formatDate(education.start_date)} - {formatDate(
+                    education.end_date,
+                )}
+            </p>
+        {/if}
+
+        {#if education.achievements?.length > 0}
+            <div>
+                <h4>Achievements</h4>
+                <ul>
+                    {#each education.achievements as achievement}
+                        <li>{achievement}</li>
+                    {/each}
+                </ul>
+            </div>
+        {/if}
+    </div>
+{/snippet}
+
+{#snippet projectSnippet(project)}
+    <div class="space-y-1">
+        <h3 class="font-medium">{project.name}</h3>
+        <p>{project.short_description}</p>
+        {#if project.description}
+            <p class="text-gray-600">{project.description}</p>
+        {/if}
+
+        {#if project.links && project.links.length > 0}
+            <div class="flex flex-wrap gap-2">
+                {#each project.links as link, i (i)}
+                    {#if typeof link === "string"}
+                        <a
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-blue-600 hover:underline"
+                        >
+                            {link}
+                        </a>
+                    {:else}
+                        <a
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-blue-600 hover:underline"
+                        >
+                            {link.name || link.url}
+                        </a>
+                    {/if}
+                {/each}
+            </div>
+        {/if}
+
+        {#if project.techstack && project.techstack.length > 0}
+            <div>
+                <p>
+                    <span class="font-medium">Tech Stack</span>:{" "}
+                    {#each project.techstack as tech, i (i)}
+                        <span
+                            class="inline-block bg-gray-100 px-2 py-1 rounded text-sm mr-1"
+                        >
+                            {tech}{#if i < project.techstack.length - 1},{/if}
+                        </span>
+                    {/each}
+                </p>
+            </div>
+        {/if}
+
+        {#if project.details && project.details.length > 0}
+            <ul class="pl-3 space-y-1">
+                {#each project.details as detail, i (i)}
+                    <li class="list-disc list-inside">{detail}</li>
+                {/each}
+            </ul>
+        {/if}
+    </div>
+{/snippet}
+
+{#snippet miscSnippet(data)}
+    <div>
+        <h2 class="category-title">➕ Misc</h2>
+
+        <!-- Cover Letter -->
+        {#if data.cover_letter}
+            <div>
+                <h3 class="font-medium text-lg">Cover Letter</h3>
+                <p>{data.cover_letter}</p>
+            </div>
+        {/if}
+
+        <!-- Q&A Section -->
+        {#if data.qna && Object.keys(data.qna).length > 0}
+            <div>
+                <h3 class="font-medium text-lg">Q&A</h3>
+                <dl>
+                    {#each Object.entries(data.qna) as [question, answer] (question)}
+                        <div>
+                            <dt class="font-medium">{question}</dt>
+                            <dd class="ml-4">{answer}</dd>
+                        </div>
+                    {/each}
+                </dl>
+            </div>
+        {/if}
+
+        <!-- Notes -->
+        {#if data.notes}
+            <div>
+                <h3 class="font-medium text-lg">Notes</h3>
+                <p>{data.notes}</p>
+            </div>
+        {/if}
+
+        <!-- Others Section -->
+        {#if data.others && Object.keys(data.others).length > 0}
+            <div>
+                <h3 class="font-medium text-lg">Others</h3>
+                <dl>
+                    {#each Object.entries(data.others) as [key, value] (key)}
+                        <div>
+                            <dt class="font-medium">{key}</dt>
+                            <dd class="ml-4">
+                                {#if typeof value === "object" && !Array.isArray(value)}
+                                    <pre>{JSON.stringify(value, null, 2)}</pre>
+                                {:else}
+                                    {value}
+                                {/if}
+                            </dd>
+                        </div>
+                    {/each}
+                </dl>
+            </div>
+        {/if}
     </div>
 {/snippet}

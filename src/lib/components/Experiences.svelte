@@ -7,7 +7,7 @@
 
 <div>
     <h2 class="category-title">🎯 Experiences</h2>
-    <ul class="space-y-2">
+    <div class="space-y-2">
         {#each data as experience}
             <Renderer
                 data={experience}
@@ -16,5 +16,5 @@
                 snippet={experienceSnippet}
             />
         {/each}
-    </ul>
+    </div>
 </div>

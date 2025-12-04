@@ -31,7 +31,6 @@
                         schema={skillsSchema}
                         snippet={skillsSnippet}
                     />
-
                     <Experience data={profileData.work_experience} />
                     <Projects data={profileData.projects} />
                     <!-- cert -->

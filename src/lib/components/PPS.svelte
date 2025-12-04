@@ -1,12 +1,11 @@
 <script>
     import Educations from "./Educations.svelte";
     import Links from "./Links.svelte";
-    import Misc from "./Misc.svelte";
     import Profiles from "./Profiles.svelte";
     import Button from "./ui/Button.svelte";
     import Renderer from "./Renderer.svelte";
-    import { personalDetailsSchema } from "$lib/schema";
-    import { personalDetailsSnippet } from "./snippets.svelte";
+    import { miscSchema, personalDetailsSchema } from "$lib/schema";
+    import { miscSnippet, personalDetailsSnippet } from "./snippets.svelte";
 
     const { pps } = $props();
     function printpps() {
@@ -27,7 +26,13 @@
                 <Educations data={pps.educations} />
                 <Links data={pps.links} />
                 <Profiles data={pps.profiles} />
-                <Misc data={pps.misc} />
+                <!-- <Misc data={pps.misc} /> -->
+                <Renderer
+                    data={pps.misc}
+                    message="Error while rendering misc"
+                    schema={miscSchema}
+                    snippet={miscSnippet}
+                />
             </div>
         </div>
         <Button onclick={printpps} cclass="my-10">Print</Button>

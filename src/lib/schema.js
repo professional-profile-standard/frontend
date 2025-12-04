@@ -119,3 +119,35 @@ export const experienceSchema = object({
     achievements: array().of(string()).default([]),
     technologies: array().of(string()).default([]),
 });
+
+export const projectSchema = object({
+    name: string().required('Name is required'),
+    short_description: string().required('Short description is required'),
+    description: string().nullable(),
+    type: string().nullable(),
+    links: array().of(
+        lazy(value =>
+            typeof value === 'string'
+                ? string().url('Must be a valid URL')
+                : linkSchema()
+        )
+    ).default([]),
+    techstack: array().of(string()).default([]),
+    start_date: date().nullable(),
+    end_date: date().nullable()
+        .test('is-after-start', 'End date must be after start date', function (value) {
+            const startDate = this.parent.start_date;
+            if (!startDate || !value) return true;
+            return value >= startDate;
+        }),
+    status: string().nullable(),
+    tags: array().of(string()).default([]),
+    details: array().of(string()).default([])
+});
+
+export const miscSchema = object({
+  cover_letter: string().nullable(),
+  qna: object().default({}),
+  notes: string().nullable(),
+  others: mixed().nullable()
+});
